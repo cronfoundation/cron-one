@@ -1,0 +1,24 @@
+{
+  "typescript.tsdk": "common/temp/node_modules/typescript/lib",
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+  "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "typescript.format.enable": false,
+  "javascript.format.enable": false,
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "cSpell.language": "en",
+  "deepscan.enable": true,
+  "files.associations": {
+    "[Dd]ockerfile*": "dockerfile",
+    "docker-compose*": "yaml",
+    "*.d.ts.map": "json"
+  },
+  "search.exclude": {
+    "packages/*/dist/**": true
+  }
+}
