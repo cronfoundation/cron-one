@@ -3,10 +3,9 @@ import { Settings, TransactionType } from '@neo-one/node-core';
 import { common } from './common';
 
 const DEFAULT_VALIDATORS: readonly string[] = [
-  "035d64f7ff9a02d7c0f8c11977ac04cc82c7ba1fb7d7932b926e561cdee11fe402",
-  "0266fad048f713b12cf54008bf73e4310b70bdb049873c9126008e512f167b2612",
-  "0326ab6643f8b687d5b2b2a6fb5d593c4a6e35cf0f91c80efaf4c87590f872c70b",
-  "021b0ca082ebc1452c10e794d18ad6c78345ff0b00777a5b842cfa925f3d3b72c4",
+  "02404e75abba2b5055fe4daac2a295c6c2cbb840999d3bbb14a5772bf998bd61a3",
+  "02f404a6ed5e86d9c5ce2782660c451da591ec5ae6e6a71efbbbe00698415aabb1",
+  "02fe6cf56db5035e574635b1f6d07a43b33ee1c03db4d74cb47d85e41c4c7c9cd8"
 ];
 
 export const createMain = ({
@@ -20,18 +19,15 @@ export const createMain = ({
   readonly standbyValidators?: readonly string[];
   readonly address?: string;
 } = {}): Settings => {
+ 
   const standbyValidators = standbyValidatorsIn.map((value) => clientCommon.stringToECPoint(value));
-
-  const consensusAddress =
-    standbyValidatorsIn === DEFAULT_VALIDATORS
-      ? clientCommon.asUInt160(Buffer.from('51b6a4d6f883b530726467bcf54d52bf08055ce5', 'hex'))
-      : crypto.getConsensusAddress(standbyValidators);
+  console.log("standbyValidators", standbyValidators);
+  console.log("DEFAULT_VALIDATORS", DEFAULT_VALIDATORS);
+  console.log("standbyValidatorsIn === DEFAULT_VALIDATORS", standbyValidatorsIn === DEFAULT_VALIDATORS);
+  const consensusAddress = crypto.getConsensusAddress(standbyValidators);
   let address: UInt160;
   if (addressIn === undefined) {
-    address =
-      standbyValidatorsIn === DEFAULT_VALIDATORS
-        ? clientCommon.asUInt160(Buffer.from('51b6a4d6f883b530726467bcf54d52bf08055ce5', 'hex'))
-        : crypto.toScriptHash(
+    address = crypto.toScriptHash(
             crypto.createMultiSignatureVerificationScript(standbyValidators.length / 2 + 1, standbyValidators),
           );
   } else {
@@ -61,7 +57,7 @@ export const createMain = ({
     },
 
     registerValidatorFee: clientCommon.fixed8FromDecimal(1000),
-    messageMagic: 67827978,
+    messageMagic: 74798271,
     addressVersion: clientCommon.NEO_ADDRESS_VERSION,
     privateKeyVersion: clientCommon.NEO_PRIVATE_KEY_VERSION,
     standbyValidators,

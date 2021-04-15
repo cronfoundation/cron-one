@@ -2,18 +2,22 @@
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
   "rushVersion": "5.17.2",
   "yarnVersion": "1.19.1",
-  "nodeSupportedVersionRange": ">=10.13.0 <=12.10.0",
+  "nodeSupportedVersionRange": ">=10.13.0 <=12.13.0",
   "ensureConsistentVersions": true,
   "suppressNodeLtsWarning": true,
-
   "approvedPackagesPolicy": {
-    "reviewCategories": ["production", "tools", "web"],
-    "ignoredNpmScopes": ["@types"]
+    "reviewCategories": [
+      "production",
+      "tools",
+      "web"
+    ],
+    "ignoredNpmScopes": [
+      "@types"
+    ]
   },
   "repository": {
     "url": "https://github.com/neo-one-suite/neo-one.git"
   },
-
   "eventHooks": {
     "preRushInstall": [],
     "postRushInstall": [],

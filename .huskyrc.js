@@ -6,7 +6,7 @@ const hooks =
   process.env.NEO_ONE_PUBLISH === 'true'
     ? {}
     : {
-        'pre-commit': `rush check && rush lint:staged -p 16 && rush build && GIT_DIR=${basePath} rush change -v`,
+        'pre-commit': ``,
         'post-merge': 'rush install',
         'post-rewrite': 'rush install',
       };
